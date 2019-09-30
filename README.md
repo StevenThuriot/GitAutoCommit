@@ -4,7 +4,7 @@ Are you like me and do you often screw yourself over by undoing just a bit too m
 
 No more! I got your back! :muscle::triumph:
 
-GitAutoCommit can automatically commit changes to git on a set interval to a separate dev branch, ending with a squash merge with a custom commit msg to the original head! Of course, the temporary dev branch will be cleaned up as well!
+GitAutoCommit can automatically commit changes to git on a set interval to a separate dev branch, ending with a squash merge with a custom commit msg to the original head! Of course, the temporary dev branch will be cleaned up as well! Don't worry, it's also smart enough not to auto delete any GitAutoCommit branches should something horrible ever happen...
 
 Finished monitoring your git repo? Just press CTRL+C !
 
