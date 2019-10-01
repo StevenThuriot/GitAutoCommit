@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+	<PackAsTool>true</PackAsTool>
+    <ToolCommandName>GitAutoCommit</ToolCommandName>
     <Authors>Steven Thuriot</Authors>
     <Description>Automatically commit changes to git on a set interval, ending with a squash merge to the original head</Description>
   </PropertyGroup>
