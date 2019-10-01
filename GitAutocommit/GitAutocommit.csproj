@@ -4,7 +4,12 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 	<PackAsTool>true</PackAsTool>
-    <ToolCommandName>GitAutoCommit</ToolCommandName>
+    <ToolCommandName>autocommit</ToolCommandName>
+	
+    <PackageId>dotnet-autocommit</PackageId>
+    <PackageVersion>1.1.0</PackageVersion>
+    <Version>1.1.0</Version>
+	
     <Authors>Steven Thuriot</Authors>
     <Description>Automatically commit changes to git on a set interval, ending with a squash merge to the original head</Description>
   </PropertyGroup>

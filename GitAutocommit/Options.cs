@@ -10,7 +10,13 @@ namespace GitAutocommit
         [Option('i', "interval", Required = false, HelpText = "Commit interval in seconds.", Default = 60)]
         public int Interval { get; set; }
 
-        [Option('d', "directory", Required = false, HelpText = "Set the git repo directory. Default is your current directory.")]
+        [Option('d', "directory", Required = false, HelpText = "(Default: Current Directory) Set the git repo directory.")]
         public string Directory { get; set; }
+
+        [Option('p', "push", Required = false, HelpText = "Automatically push to origin after squashing. If no name supplied, origin will be used. If not supplied at all, the squash will not be pushed.")]
+        public string AutoPush { get; set; }
+
+        [Option('b', "branch", Required = false, HelpText = "Create a new branch before starting your work. It's good practice not to work on master, after all!")]
+        public string Branch { get; set; }
     }
 }

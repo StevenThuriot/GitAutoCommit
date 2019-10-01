@@ -64,13 +64,29 @@ namespace GitAutocommit
 
                 using (var repo = new Repository(directory))
                 {
+                    if (!string.IsNullOrWhiteSpace(options.Branch))
+                    {
+                        WriteLine($"Creating {options.Branch} branch");
+                        var newBranch = repo.CreateBranch(options.Branch);
+                        Commands.Checkout(repo, newBranch);
+                    }
+
                     var startBranch = repo.Head;
 
-                    if (startBranch.FriendlyName == nameof(GitAutocommit))
+                    switch (startBranch.FriendlyName)
                     {
-                        WriteLine($"You're still on a {nameof(GitAutocommit)} branch.");
-                        WriteLine("This is most likely because a previous crash or unusual program termination. Please fix your repository first.");
-                        return;
+                        case nameof(GitAutocommit):
+                        {
+                            WriteLine($"You're still on a {nameof(GitAutocommit)} branch.");
+                            WriteLine("This is most likely because a previous crash or unusual program termination. Please fix your repository first.");
+                            return;
+                        }
+
+                        case "master":
+                        {
+                            WriteLine("Warning: You're currently working on master branch!");
+                            break;
+                        }
                     }
 
                     var startCommit = startBranch.Tip;
@@ -187,6 +203,33 @@ namespace GitAutocommit
 
                     WriteLine("Removing auto commit branch");
                     repo.Branches.Remove(branch);
+
+                    if (options.AutoPush != null)
+                    {
+                        var remotename = options.AutoPush;
+                        if (string.IsNullOrWhiteSpace(remotename))
+                        {
+                            remotename = "origin";
+                        }
+
+                        try
+                        {
+                            verbose("Pushing to origin");
+
+                            var remote = repo.Network.Remotes[remotename];
+
+                            repo.Branches.Update(startBranch,
+                                b => b.Remote = remote.Name,
+                                b => b.UpstreamBranch = startBranch.CanonicalName);
+
+                            repo.Network.Push(startBranch);
+                        }
+                        catch (Exception e)
+                        {
+                            WriteLine($"Failed to push to {remotename}: {e.Message}");
+                        }
+                    }
+
 
                     WriteLine("Finished auto committing");
                 }
