@@ -8,6 +8,14 @@ GitAutoCommit can automatically commit changes to git on a set interval to a sep
 
 Finished monitoring your git repo? Just press CTRL+C !
 
+## Installation
+
+As easy as running
+
+```console
+$ dotnet tool install -g dotnet-autocommit
+```
+
 ## Getting started
 
 :raising_hand: Help!
