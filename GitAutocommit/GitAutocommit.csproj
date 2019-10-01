@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,8 +7,8 @@
     <ToolCommandName>autocommit</ToolCommandName>
 	
     <PackageId>dotnet-autocommit</PackageId>
-    <PackageVersion>1.1.0</PackageVersion>
-    <Version>1.1.0</Version>
+    <PackageVersion>1.1.1</PackageVersion>
+    <Version>1.1.1</Version>
 	
     <Authors>Steven Thuriot</Authors>
     <Description>Automatically commit changes to git on a set interval, ending with a squash merge to the original head</Description>
