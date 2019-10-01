@@ -17,15 +17,23 @@ If you want to know how to configure GitAutoCommit, just scream!
 Run `dotnet GitAutocommit.dll --help` for all options currently available
 
 ```console
-$ dotnet GitAutocommit.dll --help
-GitAutocommit 1.0.0
-Copyright (C) 2019 GitAutocommit
+$ autocommit --help
+GitAutocommit 1.1.0
+Copyright (C) 2019 Steven Thuriot
 
   -v, --verbose      (Default: false) Set output to verbose messages.
 
   -i, --interval     (Default: 60) Commit interval in seconds.
 
-  -d, --directory    Set the git repo directory. Default is your current directory.
+  -d, --directory    (Default: Current Directory) Set the git repo directory.
+
+  -p, --push         Automatically push to origin after squashing. If no name
+                     supplied, origin will be used. If not supplied at all, the
+
+                     squash will not be pushed.
+
+  -b, --branch       Create a new branch before starting your work. It's good
+                     practice not to work on master, after all!
 
   --help             Display this help screen.
 
@@ -36,7 +44,7 @@ Copyright (C) 2019 GitAutocommit
  :rocket: Running the watcher in a git directory:
  
  ```console
- $ dotnet GitAutocommit.dll
+ $ autocommit
 Monitoring D:\Git\GitAutoCommit for changes
 Auto committed 1 change on 09/30/2019 23:40:14
 Auto committed 3 changes on 09/30/2019 23:41:14
