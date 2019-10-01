@@ -12,6 +12,14 @@
 	
     <Authors>Steven Thuriot</Authors>
     <Description>Automatically commit changes to git on a set interval, ending with a squash merge to the original head</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/StevenThuriot/GitAutoCommit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/StevenThuriot/GitAutoCommit</RepositoryUrl>
+    <PackageTags>git dotnet</PackageTags>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <NeutralLanguage>englis</NeutralLanguage>
+    <Copyright>Steven Thuriot</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
