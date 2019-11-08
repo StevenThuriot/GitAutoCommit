@@ -18,5 +18,8 @@ namespace GitAutocommit
 
         [Option('b', "branch", Required = false, HelpText = "Create a new branch before starting your work. It's good practice not to work on master, after all!")]
         public string Branch { get; set; }
+
+        [Option('f', "from", Required = false, HelpText = "Starting point to create the branches.")]
+        public string BranchFrom { get; set; }
     }
 }

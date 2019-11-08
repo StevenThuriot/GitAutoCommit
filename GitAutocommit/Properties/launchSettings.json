@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GitAutocommit": {
+      "commandName": "Project",
+      "commandLineArgs": "-f test2 -d D:\\Git\\GitAutocommit"
+    }
+  }
+}
