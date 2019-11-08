@@ -1,19 +1,31 @@
 ﻿using CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GitAutocommit
 {
     static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Parser.Default.ParseArguments<Options>(args)
-                   .WithParsed(options => Run(options).GetAwaiter().GetResult());
+            var result = Parser.Default.ParseArguments<Options>(args);
+            await result.MapResult(async options => await Run(options), MapErrors);
         }
 
-        private static Task Run(Options options)
+        private static Task MapErrors(IEnumerable<Error> errors)
+        {
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error.ToString());
+            }
+
+            return Task.CompletedTask;
+        }
+
+        private static async Task Run(Options options)
         {
             var serviceCollection = new ServiceCollection()
                                             .AddSingleton(options)
@@ -27,7 +39,14 @@ namespace GitAutocommit
 
             var service = services.GetService<CommitService>();
 
-            return service.Execute();
+            try
+            {
+                await service.Execute();
+            }
+            catch (Exception e)
+            {
+                services.GetService<ILogger<CommitService>>().LogError(e.Message);
+            }
         }
     }
 }
