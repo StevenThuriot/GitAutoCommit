@@ -3,12 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-	<PackAsTool>true</PackAsTool>
+    
+    <PackAsTool>true</PackAsTool>
     <ToolCommandName>autocommit</ToolCommandName>
 	
     <PackageId>dotnet-autocommit</PackageId>
-    <PackageVersion>1.1.1</PackageVersion>
-    <Version>1.1.1</Version>
+    <PackageVersion>1.5.0</PackageVersion>
+    <Version>1.5.0</Version>
 	
     <Authors>Steven Thuriot</Authors>
     <Description>Automatically commit changes to git on a set interval, ending with a squash merge to the original head</Description>
@@ -20,11 +21,15 @@
     <NeutralLanguage>englis</NeutralLanguage>
     <Copyright>Steven Thuriot</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.5.0.0</AssemblyVersion>
+    <FileVersion>1.5.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.6.0" />
     <PackageReference Include="LibGit2Sharp" Version="0.26.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
